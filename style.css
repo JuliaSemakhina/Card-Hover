@@ -6,12 +6,8 @@
 
 :root {
     --clr-neutral-900: hsl(207, 19%, 9%);
-    --clr-neutral-100: hsl(0,0%,100%);
+    --clr-neutral-100: hsl(0, 0%, 100%);
     --clr-accent-400: hsl(142, 90%, 61%);
-   /* --clr-accent-dark: rgb(163, 38, 0);
-    --clr-secondary: rgb(0, 76, 199);
-    --br: .5em;
-    --transition: transform 200ms cubic-bezier(.21, 1.05, .81, 1.05);*/
 }
 
 body {
@@ -25,93 +21,110 @@ body {
 }
 
 .card {
-  color:  var(--clr-neutral-100);
-  background-image: url(images/closed.jpg);
-  background-size: cover;
-  padding: 9rem 0 0;
-  max-width: 35ch;
-  border-radius: .5rem;
-  overflow:  hidden;
-  transition:  transform 500ms ease;
+    color: var(--clr-neutral-100);
+    background-image: url(images/closed.jpg);
+    background-size: cover;
+    padding: 9rem 0 0;
+    max-width: 35ch;
+    border-radius: .5rem;
+    overflow: hidden;
+    transition: transform 500ms ease;
 }
 
 .card:hover,
 .card:focus-within {
-  transform:  scale(1.05);
+    transform: scale(1.05);
 }
 
 
 .card-content {
-  --padding: 1.5rem;
-  padding:  var(--padding);
-  background: linear-gradient(
-  hsl(0 0% 0%  /0),
-  hsl(20 0% 0%  /.3) 20%,
-  hsl(0 0% 0%  /1)
-  );
-  transform:  translateY(65%);
-  transition:  transform 500ms ease;
-}
-
-.card:hover .card-content,
-.card:focus-within .card-content {
-  transform:  translateY(0);
-  transition-delay: 500ms;
-}
-
-.card:focus-within .card-content {
-  transition-duration: 0ms;
-}
-
-.card-content > *:not(.card-title) {
-  opacity:  0;
-  transition: opacity 500ms linear;
-}
-
-.card:hover .card-content > *:not(.card-title),
- .card:focus-within .card-content > *:not(.card-title) {
-  opacity:  1;
-   transition-delay: 1000ms;
+    --padding: 1.5rem;
+    padding: var(--padding);
+    background: linear-gradient(hsl(0 0% 0% /0),
+        hsl(20 0% 0% /.3) 20%,
+        hsl(0 0% 0% /1));
 }
 
 
 .card-title {
-  position: relative;
-  width:  max-content;
+    position: relative;
+    width: max-content;
 }
 
 .card-title::after {
-  content:  '';
-  position:  absolute;
-  height: 3px;
-  width:calc(100% + var(--padding));
-  left: calc(var(--padding) * -1);
-  bottom: -2px;
-  background:  var(--clr-accent-400);
-  transform:  scaleX(0);
-  transform-origin: left;
-  transition:  transform 500ms ease;
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: calc(100% + var(--padding));
+    left: calc(var(--padding) * -1);
+    bottom: -2px;
+    background: var(--clr-accent-400);
+
+    transform-origin: left;
+    transition: transform 500ms ease;
 }
 
 .card:hover .card-title::after {
-  transform:  scaleX(1);
+    transform: scaleX(1);
 }
 
 .card-body {
-  color:  rgb(255 255 255 /.85);
+    color: rgb(255 255 255 /.85);
+}
+
+@media (hover) {
+    .card-content {
+        transform: translateY(65%);
+        transition: transform 500ms ease;
+    }
+
+    .card:hover .card-content,
+    .card:focus-within .card-content {
+        transform: translateY(0);
+        transition-delay: 500ms;
+    }
+
+    .card:focus-within .card-content {
+        transition-duration: 0ms;
+    }
+
+    .card-content>*:not(.card-title) {
+        opacity: 0;
+        transition: opacity 500ms linear;
+    }
+
+    .card:hover .card-content>*:not(.card-title),
+    .card:focus-within .card-content>*:not(.card-title) {
+        opacity: 1;
+        transition-delay: 1000ms;
+    }
+
+    .card-title::after {
+        transform: scaleX(0);
+    }
+
 }
 
 .button {
-  cursor:  pointer;
-  display:  inline-block;
-  text-decoration: none;
-  color: var(--clr-neutral-900);
-  background-color: var(--clr-accent-400);
-  padding: 0.5rem 1.25rem;
-  border-radius: .25rem;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--clr-neutral-900);
+    background-color: var(--clr-accent-400);
+    padding: 0.5rem 1.25rem;
+    border-radius: .25rem;
 }
 
 .button:hover,
 .button:focus {
-  background-color: var(--clr-neutral-100);
+    background-color: var(--clr-neutral-100);
+}
+
+@media (prefers-reduce-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
